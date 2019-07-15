@@ -1,0 +1,4 @@
+{
+    "name": "Street League",
+    "db": "mongodb://localhost/street-league"
+}
