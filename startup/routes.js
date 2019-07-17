@@ -1,4 +1,5 @@
 const express = require('express');
+const auth = require('../routes/auth');
 const teams = require('../routes/teams');
 const players = require('../routes/players');
 const fixtures = require('../routes/fixtures');
@@ -9,6 +10,7 @@ const error = require('../middleware/error');
 
 module.exports = function (app) {
     app.use(express.json());
+    app.use('/api/auth', auth);
     app.use('/api/teams', teams);
     app.use('/api/players', players);
     app.use('/api/fixtures', fixtures);
