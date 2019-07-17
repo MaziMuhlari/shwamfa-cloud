@@ -4,6 +4,7 @@ const players = require('../routes/players');
 const fixtures = require('../routes/fixtures');
 const articles = require('../routes/articles');
 const reports = require('../routes/reports');
+const users = require('../routes/users');
 const error = require('../middleware/error');
 
 module.exports = function (app) {
@@ -13,5 +14,6 @@ module.exports = function (app) {
     app.use('/api/fixtures', fixtures);
     app.use('/api/articles', articles);
     app.use('/api/reports', reports);
+    app.use('/api/users', users);
     app.use(error);
 }

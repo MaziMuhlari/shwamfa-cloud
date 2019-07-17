@@ -1,3 +1,4 @@
 {
+    "jwtPrivateKey": "STREET_LEAGUE_JWT_PRIVATE_KEY",
     "db": "MONGODB_URI"
 }
