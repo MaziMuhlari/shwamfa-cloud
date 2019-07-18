@@ -19,13 +19,13 @@ router.post('/', async (req, res) => {
     user = await User.findOne({ email: req.body.email });
     if (user) return res.status(400).send({ 'data': null, "message": 'A user with that email address already exists. You will need to provide another email address.' });
 
-    user = new User(_.pick(req.body, ['name', 'surname', 'cellphone', 'email', 'password']));
+    user = new User(_.pick(req.body, ['name', 'surname', 'cellphone', 'email', 'password', 'favourite']));
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
     await user.save();
 
     const token = user.generateAuthToken();
-    res.header('x-auth-token', token).send({ 'data': _.pick(user, ['_id', 'name', 'surname', 'cellphone', 'email']), 'message': null });
+    res.header('x-auth-token', token).send({ 'data': _.pick(user, ['_id', 'name', 'surname', 'cellphone', 'email', 'favourite']), 'message': null });
 
 });
 
