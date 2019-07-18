@@ -38,10 +38,8 @@ const userSchema = new mongoose.Schema({
     },
     favourite: {
         type: String,
-        required: true,
         minlength: 3,
-        maxlength: 255,
-        unique: true
+        maxlength: 255
     },
     rating: {
         type: Number,
@@ -71,7 +69,7 @@ function validateJoin(user) {
         cellphone: Joi.string().min(8).max(255).required(),
         email: Joi.string().min(3).max(255).required().email(),
         password: Joi.string().min(5).max(1024).required(),
-        favourite: Joi.string().min(3).max(255).required()
+        favourite: Joi.string().min(3).max(255).allow(null)
     };
 
     return Joi.validate(user, schema);
