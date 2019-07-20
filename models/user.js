@@ -36,6 +36,15 @@ const userSchema = new mongoose.Schema({
         minlength: 5,
         maxlength: 1024
     },
+    role: {
+        type: String,
+        enum: [
+            'USER',
+            'SYSADMIN'
+        ],
+        default: 'USER',
+        required: true
+    },
     favourite: {
         type: String,
         minlength: 3,
