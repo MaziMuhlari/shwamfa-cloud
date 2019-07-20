@@ -45,16 +45,40 @@ router.get('/:teamId', async (req, res) => {
  */
 router.get('/', async (req, res) => {
 
-    let teams = await Team.find().sort({ 'points': -1, 'goalDifference': -1 });
-    let position = 1;
-    
-    for (let index = 0; index < teams.length; index++) {
-        const team = teams[index];
-        team.position = position;
-        position++;
-    }
+    await Team.find()
+        .sort({ 'points': -1, 'goalDifference': -1 })
+        .exec(function (e, docs) {
 
-    res.send(teams);
+            let teams = [];
+
+            if (docs && docs.length > 0) {
+                let position = 1;
+                docs.forEach(element => {
+                    teams.push({
+                        gamesWon: element.gamesWon,
+                        gamesDrawn: element.gamesDrawn,
+                        gamesLost: element.gamesLost,
+                        goalsScored: element.goalsScored,
+                        goalsConceided: element.goalsConceided,
+                        dateCreated: element.dateCreated,
+                        lastUpdated: element.lastUpdated,
+                        _id: element._id,
+                        emblemUrl: element.emblemUrl,
+                        name: element.name,
+                        __v: element.__v,
+                        gamesPlayed: element.gamesPlayed,
+                        goalDifference: element.goalDifference,
+                        points: element.points,
+                        id: element.id,
+                        position: position
+                    });
+                    position++;
+                });
+            }
+
+            res.send(teams);
+
+        });
 
 });
 
