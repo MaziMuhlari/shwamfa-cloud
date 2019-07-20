@@ -45,7 +45,7 @@ router.get('/:teamId', async (req, res) => {
  */
 router.get('/', async (req, res) => {
 
-    const teams = await Team.find();
+    const teams = await Team.find().sort({ 'points': -1, 'goalDifference': -1 });
     res.send(teams);
 
 });
