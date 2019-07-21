@@ -8,6 +8,9 @@ const articleSchema = new mongoose.Schema({
     title: {
         type: String
     },
+    blurb: {
+        type: String
+    },
     content: {
         type: String
     },
@@ -30,6 +33,7 @@ function validateArticle(article) {
     const schema = {
         imageUrl: Joi.string().allow('').allow(null),
         title: Joi.string().required(),
+        blurb: Joi.string().required(),
         content: Joi.string().required(),
         author: Joi.string().required()
     };

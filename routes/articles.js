@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
     const { error } = validateArticle(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    let article = new Article(_.pick(req.body, ['imageUrl', 'title', 'content', 'author']));
+    let article = new Article(_.pick(req.body, ['imageUrl', 'title', 'blurb', 'content', 'author']));
     await article.save();
 
     res.send(article);
