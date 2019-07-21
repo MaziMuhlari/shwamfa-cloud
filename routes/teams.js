@@ -45,7 +45,7 @@ router.get('/:teamId', async (req, res) => {
  */
 router.get('/', async (req, res) => {
 
-    const teams = await Team.find().sort('-league');
+    const teams = await Team.find().sort({ 'league': -1, 'points': -1, 'goalDifference': -1 });
 
     var position = 1;
     var league;
@@ -75,10 +75,9 @@ router.get('/', async (req, res) => {
             id: team.id
         });
 
+        league = team.league;
         position++;
     });
-
-    let ranked = positioned
 
     res.send(positioned);
 
