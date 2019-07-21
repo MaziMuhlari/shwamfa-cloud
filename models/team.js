@@ -9,6 +9,9 @@ const teamSchema = new mongoose.Schema(
         name: {
             type: String
         },
+        league: {
+            type: String
+        },
         gamesWon: {
             type: Number,
             default: 0
@@ -64,6 +67,7 @@ function validateTeam(team) {
     const schema = {
         emblemUrl: Joi.string().required(),
         name: Joi.string().required(),
+        league: Joi.string().required(),
         gamesWon: Joi.number().required(),
         gamesDrawn: Joi.number().required(),
         gamesLost: Joi.number().required(),

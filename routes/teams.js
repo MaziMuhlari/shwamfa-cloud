@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
     const { error } = validateTeam(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    let team = new Team(_.pick(req.body, ["emblemUrl", "name", "gamesWon", "gamesDrawn", "gamesLost", "goalsScored", "goalsConceided"]));
+    let team = new Team(_.pick(req.body, ["emblemUrl", "name", "league", "gamesWon", "gamesDrawn", "gamesLost", "goalsScored", "goalsConceided"]));
     await team.save();
 
     res.send(team);
