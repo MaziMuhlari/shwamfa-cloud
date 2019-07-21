@@ -45,12 +45,13 @@ router.get('/:teamId', async (req, res) => {
  */
 router.get('/', async (req, res) => {
 
-    const teams = await Team.find().sort({ 'league': -1, 'points': -1, 'goalDifference': -1 });
+    const teams = await Team.find();
+    let ranked = _.orderBy(teams, ['league', 'points', 'goalDifference'], ['desc', 'desc', 'desc']);
 
     var position = 1;
     var league;
     var positioned = [];
-    teams.forEach(team => {
+    ranked.forEach(team => {
 
         if (league != team.league)
             position = 1;
