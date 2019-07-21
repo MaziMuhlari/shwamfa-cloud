@@ -62,6 +62,7 @@ router.get('/', async (req, res) => {
             gamesLost: team.gamesLost,
             goalsScored: team.goalsScored,
             goalsConceided: team.goalsConceided,
+            league: team.league,
             dateCreated: team.dateCreated,
             lastUpdated: team.lastUpdated,
             _id: team._id,
