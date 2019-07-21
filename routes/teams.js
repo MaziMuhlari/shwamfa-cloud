@@ -46,7 +46,38 @@ router.get('/:teamId', async (req, res) => {
 router.get('/', async (req, res) => {
 
     const teams = await Team.find().sort({ 'league': -1, 'points': -1, 'goalDifference': -1 });
-    res.send(teams);
+
+    var position = 1;
+    var league;
+    var positioned = [];
+    teams.forEach(team => {
+
+        if (league != team.league)
+            position = 1;
+
+        positioned.push({
+            position: position,
+            gamesWon: team.gamesWon,
+            gamesDrawn: team.gamesDrawn,
+            gamesLost: team.gamesLost,
+            goalsScored: team.goalsScored,
+            goalsConceided: team.goalsConceided,
+            dateCreated: team.dateCreated,
+            lastUpdated: team.lastUpdated,
+            _id: team._id,
+            emblemUrl: team.emblemUrl,
+            name: team.name,
+            __v: team.__v,
+            gamesPlayed: team.gamesPlayed,
+            goalDifference: team.goalDifference,
+            points: team.points,
+            id: team.id
+        });
+
+        position++;
+    });
+
+    res.send(positioned);
 
 });
 
