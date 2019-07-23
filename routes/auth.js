@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
     if (error) return res.status(400).send({ 'data': null, "message": error.details[0].message });
 
     let user = await User.findOne({ cellphone: req.body.cellphone });
-    if (!user) return res.status(400).send({ 'data': null, "message": 'The cellphone number you entered does not exist. Please enter a valid cellphone number to continue.' });
+    if (!user) return res.status(400).send({ 'data': null, "message": 'The cellphone number you entered does not exist. Please enter a valid cellphone number or create an account to continue.' });
 
     const isValidPassword = await bcrypt.compare(req.body.password, user.password);
     if (!isValidPassword) return res.status(400).send({ 'data': null, "message": 'The password you have entered is not correct. Please make sure that you enter a correct password.' });
