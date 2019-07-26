@@ -30,6 +30,20 @@ router.post('/', async (req, res) => {
 });
 
 /**
+ * @api {get} /api/users
+ * @apiName GetUsers
+ * @apiGroup Users
+ * 
+ * @apiDescription Get all users.
+ */
+router.get('/', auth, async (req, res) => {
+
+    const users = await User.find().select('-password');
+    res.send(users);
+
+});
+
+/**
  * Get Profile Information
  */
 router.get('/me', auth, async (req, res) => {
