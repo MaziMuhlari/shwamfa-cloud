@@ -1,4 +1,5 @@
 const { Team, validateTeam } = require('../models/team');
+const auth = require('../middleware/authentication');
 const _ = require('lodash');
 const express = require('express');
 const router = express.Router();
@@ -10,7 +11,7 @@ const router = express.Router();
  * 
  * @apiDescription Publish a news team.
  */
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
 
     const { error } = validateTeam(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -29,7 +30,7 @@ router.post('/', async (req, res) => {
  * 
  * @apiDescription Get a published team by Id.
  */
-router.get('/:teamId', async (req, res) => {
+router.get('/:teamId', auth, async (req, res) => {
 
     const team = await Team.findById(req.params.teamId);
     res.send(team);
@@ -43,7 +44,7 @@ router.get('/:teamId', async (req, res) => {
  * 
  * @apiDescription Get all published teams.
  */
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
 
     const teams = await Team.find();
     let ranked = _.orderBy(teams, ['league', 'points', 'goalDifference'], ['desc', 'desc', 'desc']);

@@ -1,4 +1,5 @@
 const { Fixture, validateFixture } = require('../models/fixture');
+const auth = require('../middleware/authentication');
 const _ = require('lodash');
 const express = require('express');
 const router = express.Router();
@@ -10,7 +11,7 @@ const router = express.Router();
  * 
  * @apiDescription Publish a news fixture.
  */
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
 
     const { error } = validateFixture(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -29,7 +30,7 @@ router.post('/', async (req, res) => {
  * 
  * @apiDescription Get a published fixture by Id.
  */
-router.get('/:fixtureId', async (req, res) => {
+router.get('/:fixtureId', auth, async (req, res) => {
 
     const fixture = await Fixture.findById(req.params.fixtureId);
     res.send(fixture);
@@ -43,7 +44,7 @@ router.get('/:fixtureId', async (req, res) => {
  * 
  * @apiDescription Get all published fixtures.
  */
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
 
     const fixtures = await Fixture.find();
     res.send(fixtures);

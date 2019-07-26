@@ -1,4 +1,5 @@
 const { Player, validatePlayer } = require('../models/player');
+const auth = require('../middleware/authentication');
 const _ = require('lodash');
 const express = require('express');
 const router = express.Router();
@@ -10,7 +11,7 @@ const router = express.Router();
  * 
  * @apiDescription Publish a news player.
  */
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
 
     const { error } = validatePlayer(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -29,7 +30,7 @@ router.post('/', async (req, res) => {
  * 
  * @apiDescription Get a published player by Id.
  */
-router.get('/:playerId', async (req, res) => {
+router.get('/:playerId', auth, async (req, res) => {
 
     const player = await Player.findById(req.params.playerId);
     res.send(player);
@@ -43,7 +44,7 @@ router.get('/:playerId', async (req, res) => {
  * 
  * @apiDescription Get all published players.
  */
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
 
     const players = await Player.find();
     res.send(players);

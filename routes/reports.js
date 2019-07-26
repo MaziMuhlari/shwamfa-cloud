@@ -2,7 +2,7 @@ const { Article } = require('../models/article');
 const { Fixture } = require('../models/fixture');
 const { Player } = require('../models/player');
 const { Team } = require('../models/team');
-const _ = require('lodash');
+const auth = require('../middleware/authentication');
 const express = require('express');
 const router = express.Router();
 
@@ -14,7 +14,7 @@ const router = express.Router();
  * 
  * @apiDescription Get the latest published article.
  */
-router.get('/articles/latest', async (req, res) => {
+router.get('/articles/latest', auth, async (req, res) => {
 
     const article = await Article.findOne({}, {}, { sort: { 'created_at': -1 } });
     res.send(article);
@@ -28,7 +28,7 @@ router.get('/articles/latest', async (req, res) => {
  * 
  * @apiDescription Get the latest played fixture.
  */
-router.get('/fixtures/latest', async (req, res) => {
+router.get('/fixtures/latest', auth, async (req, res) => {
 
     var now = new Date();
     now.setDate(now.getDate() + 1);
@@ -49,7 +49,7 @@ router.get('/fixtures/latest', async (req, res) => {
  * 
  * @apiDescription Get the top scorer.
  */
-router.get('/players/scorers/top', async (req, res) => {
+router.get('/players/scorers/top', auth, async (req, res) => {
 
     const player = await Player
         .findOne()
@@ -66,7 +66,7 @@ router.get('/players/scorers/top', async (req, res) => {
  * 
  * @apiDescription Get the current standing of the team
  */
-router.get('/teams/standings/current', async (req, res) => {
+router.get('/teams/standings/current', auth, async (req, res) => {
 
     const teams = await Team
         .findOne({ 'name': 'Black Leopards' });

@@ -1,4 +1,5 @@
 const { Article, validateArticle } = require('../models/article');
+const auth = require('../middleware/authentication');
 const _ = require('lodash');
 const express = require('express');
 const router = express.Router();
@@ -10,7 +11,7 @@ const router = express.Router();
  * 
  * @apiDescription Publish a news article.
  */
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
 
     const { error } = validateArticle(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -29,7 +30,7 @@ router.post('/', async (req, res) => {
  * 
  * @apiDescription Get a published article by Id.
  */
-router.get('/:articleId', async (req, res) => {
+router.get('/:articleId', auth, async (req, res) => {
 
     const article = await Article.findById(req.params.articleId);
     res.send(article);
@@ -43,7 +44,7 @@ router.get('/:articleId', async (req, res) => {
  * 
  * @apiDescription Get all published articles.
  */
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
 
     const articles = await Article.find({}, {}, { sort: { 'created_at' : -1 } });
     res.send(articles);
