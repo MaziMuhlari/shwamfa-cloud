@@ -50,7 +50,7 @@ router.post('/', [auth, upload.single('file')], async (req, res) => {
         })
         .catch(async failure => {
             await unlinkAsync(filepath);
-            res.send(failure);
+            res.send(null);
         });
 
 });
