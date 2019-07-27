@@ -1,4 +1,5 @@
 {
     "jwtPrivateKey": "STREET_LEAGUE_JWT_PRIVATE_KEY",
+    "fileStackApiKey": "FILESTACK_API_KEY",
     "db": "MONGODB_URI"
 }
