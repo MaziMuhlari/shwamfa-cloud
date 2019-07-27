@@ -1,6 +1,5 @@
 const { Media, validateMedia } = require('../models/media');
 const auth = require('../middleware/authentication');
-const _ = require('lodash');
 const express = require('express');
 const config = require('config');
 
