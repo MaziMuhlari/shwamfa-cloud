@@ -7,6 +7,7 @@ const articles = require('../routes/articles');
 const reports = require('../routes/reports');
 const users = require('../routes/users');
 const media = require('../routes/media');
+const leagues = require('../routes/leagues');
 const error = require('../middleware/error');
 
 module.exports = function (app) {
@@ -19,5 +20,6 @@ module.exports = function (app) {
     app.use('/api/reports', reports);
     app.use('/api/users', users);
     app.use('/api/media', media);
+    app.use('/api/leagues', leagues);
     app.use(error);
 };
