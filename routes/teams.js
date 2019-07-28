@@ -86,13 +86,13 @@ router.get('/', auth, async (req, res) => {
 });
 
 /**
- * @api {get} /api/teams/1
+ * @api {delete} /api/teams/1
  * @apiName DeleteTeamById
  * @apiGroup Teams
  * 
  * @apiDescription Delete a team by Id.
  */
-router.get('/:id', auth, async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
 
     const team = await Team.findByIdAndDelete(req.params.id);
     res.send(team);

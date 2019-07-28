@@ -64,13 +64,13 @@ router.post("/password/change", async (req, res) => {
 });
 
 /**
- * @api {get} /api/users/1
+ * @api {delete} /api/users/1
  * @apiName DeleteUserById
  * @apiGroup Users
  * 
  * @apiDescription Delete a user by Id.
  */
-router.get('/:id', auth, async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
 
     const user = await User.findByIdAndDelete(req.params.id);
     res.send(user);
