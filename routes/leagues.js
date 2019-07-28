@@ -51,4 +51,18 @@ router.get('/', auth, async (req, res) => {
 
 });
 
+/**
+ * @api {get} /api/league/1
+ * @apiName DeleteLeagueById
+ * @apiGroup Leagues
+ * 
+ * @apiDescription Delete a league by Id.
+ */
+router.get('/:id', auth, async (req, res) => {
+
+    const league = await League.findByIdAndDelete(req.params.id);
+    res.send(league);
+
+});
+
 module.exports = router;

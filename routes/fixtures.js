@@ -51,4 +51,18 @@ router.get('/', auth, async (req, res) => {
     
 });
 
+/**
+ * @api {get} /api/fixtures/1
+ * @apiName DeleteFixtureById
+ * @apiGroup Fixtures
+ * 
+ * @apiDescription Delete a fixture by Id.
+ */
+router.get('/:id', auth, async (req, res) => {
+
+    const fixture = await Fixture.findByIdAndDelete(req.params.id);
+    res.send(fixture);
+
+});
+
 module.exports = router;

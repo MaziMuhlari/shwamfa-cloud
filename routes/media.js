@@ -83,4 +83,18 @@ router.get('/', auth, async (req, res) => {
 
 });
 
+/**
+ * @api {get} /api/media/1
+ * @apiName DeleteMediaById
+ * @apiGroup Media
+ * 
+ * @apiDescription Delete media by Id.
+ */
+router.get('/:id', auth, async (req, res) => {
+
+    const media = await Media.findByIdAndDelete(req.params.id);
+    res.send(media);
+
+});
+
 module.exports = router;

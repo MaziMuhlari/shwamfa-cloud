@@ -51,4 +51,18 @@ router.get('/', auth, async (req, res) => {
 
 });
 
+/**
+ * @api {get} /api/articles/1
+ * @apiName DeleteArticleById
+ * @apiGroup Articles
+ * 
+ * @apiDescription Delete an article by Id.
+ */
+router.get('/:id', auth, async (req, res) => {
+
+    const article = await Article.findByIdAndDelete(req.params.id);
+    res.send(article);
+
+});
+
 module.exports = router;
