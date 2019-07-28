@@ -12,10 +12,12 @@ const playerSchema = new mongoose.Schema({
         type: String
     },
     goalsScored: {
-        type: Number
+        type: Number,
+        default: 0
     },
     assists: {
-        type: Number
+        type: Number,
+        default: 0
     },
     dateCreated: {
         type: Date,
