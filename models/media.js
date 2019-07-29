@@ -5,6 +5,9 @@ const mediaSchema = new mongoose.Schema({
     title: {
         type: String
     },
+    type: {
+        type: String
+    },
     url: {
         type: String
     },
@@ -35,6 +38,7 @@ function validateMedia(media) {
         url: Joi.string().required(),
         size: Joi.number().required(),
         type: Joi.string().required(),
+        mimetype: Joi.string().required(),
         filename: Joi.string().required()
     };
 

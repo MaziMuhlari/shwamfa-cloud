@@ -31,11 +31,12 @@ router.post('/', [auth, upload.single('file')], async (req, res) => {
     const file = req.file;
     const filepath = file.path;
     const friendly = req.body.title;
+    const type = req.body.type;
 
     filestack.upload(filepath)
         .then(async ok => {
 
-            const obj = { title: friendly, url: ok.url, size: ok.size, type: ok.mimetype, filename: ok.filename };
+            const obj = { title: friendly, type: type, url: ok.url, size: ok.size, mimetype: ok.mimetype, filename: ok.filename };
 
             const { error } = validateMedia(obj);
             if (error) return res.status(400).send(error.details[0].message);
