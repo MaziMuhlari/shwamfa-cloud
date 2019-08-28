@@ -44,7 +44,7 @@ router.get('/:teamId', auth, async (req, res) => {
  * 
  * @apiDescription Get all published teams.
  */
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
 
     const teams = await Team.find();
     let ranked = _.orderBy(teams, ['league', 'points', 'goalDifference'], ['desc', 'desc', 'desc']);
