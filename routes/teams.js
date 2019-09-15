@@ -32,7 +32,11 @@ router.post('/', auth, async (req, res) => {
  */
 router.get('/:teamId', auth, async (req, res) => {
 
-    const team = await Team.findById(req.params.teamId);
+    const team = await Team.findById(req.params.teamId)
+        .populate({
+            path: 'user',
+            model: 'User'
+        });
     res.send(team);
 
 });
@@ -46,7 +50,12 @@ router.get('/:teamId', auth, async (req, res) => {
  */
 router.get('/', async (req, res) => {
 
-    const teams = await Team.find();
+    const teams = await Team.find()
+        .populate({
+            path: 'user',
+            model: 'User'
+        });
+
     let ranked = _.orderBy(teams, ['points'], ['desc']);
 
     var position = 1;
