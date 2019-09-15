@@ -195,7 +195,8 @@ function validateTeam(team) {
         emblemUrl: Joi.string().required(),
         name: Joi.string().required(),
         manager: Joi.string().required(),
-        link: Joi.string().required()
+        link: Joi.string().required(),
+        firstGameweek: Joi.number().required()
     };
 
     return Joi.validate(team, schema);
