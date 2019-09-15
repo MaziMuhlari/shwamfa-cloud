@@ -35,7 +35,8 @@ router.get('/:teamId', auth, async (req, res) => {
     const team = await Team.findById(req.params.teamId)
         .populate({
             path: 'user',
-            model: 'User'
+            model: 'User',
+            select: '-password'
         });
     res.send(team);
 
@@ -53,7 +54,8 @@ router.get('/', async (req, res) => {
     const teams = await Team.find()
         .populate({
             path: 'user',
-            model: 'User'
+            model: 'User',
+            select: '-password'
         });
 
     let ranked = _.orderBy(teams, ['points'], ['desc']);
