@@ -10,6 +10,9 @@ const teamSchema = new mongoose.Schema(
         name: {
             type: String
         },
+        manager: {
+            type: String
+        },
         link: {
             type: String
         },
@@ -165,6 +168,10 @@ const teamSchema = new mongoose.Schema(
             type: Number,
             default: 0
         },
+        firstGameweek: {
+            type: Number,
+            default: 1
+        },
         dateCreated: {
             type: Date,
             default: new Date()
@@ -187,6 +194,7 @@ function validateTeam(team) {
     const schema = {
         emblemUrl: Joi.string().required(),
         name: Joi.string().required(),
+        manager: Joi.string().required(),
         link: Joi.string().required()
     };
 

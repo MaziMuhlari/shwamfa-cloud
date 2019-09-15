@@ -45,9 +45,11 @@ const userSchema = new mongoose.Schema({
         default: 'USER',
         required: true
     },
-    dateJoined: {
-        type: Date,
-        default: new Date()
+    instagram: {
+        type: String,
+        minlength: 3,
+        maxlength: 255,
+        unique: true
     },
     dateCreated: {
         type: Date,
@@ -72,9 +74,7 @@ function validateJoin(user) {
         surname: Joi.string().min(1).max(50).required(),
         cellphone: Joi.string().min(8).max(255).required(),
         email: Joi.string().min(3).max(255).required().email(),
-        password: Joi.string().min(5).max(1024).required(),
-        team: Joi.string().min(3).max(255).allow(null),
-        manager: Joi.string().min(3).max(255).allow(null)
+        password: Joi.string().min(5).max(1024).required()
     };
 
     return Joi.validate(user, schema);
