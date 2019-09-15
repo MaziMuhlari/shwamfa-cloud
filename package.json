@@ -1,7 +1,7 @@
 {
-  "name": "street-league-cloud",
+  "name": "shwamfa-cloud",
   "version": "1.0.0",
-  "description": "Street League is a local competitive racing league for amateur racing enthusiasts.",
+  "description": "The most competitive fantasy football league in the world.",
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll --verbose",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MaziMuhlari/street-league-cloud.git"
+    "url": "git+https://github.com/MaziMuhlari/shwamfa-cloud.git"
   },
   "author": "Mazi Muhlari",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MaziMuhlari/street-league-cloud/issues"
+    "url": "https://github.com/MaziMuhlari/shwamfa-cloud/issues"
   },
-  "homepage": "https://github.com/MaziMuhlari/street-league-cloud#readme",
+  "homepage": "https://github.com/MaziMuhlari/shwamfa-cloud#readme",
   "dependencies": {
     "bcrypt": "^2.0.1",
     "body-parser": "^1.19.0",

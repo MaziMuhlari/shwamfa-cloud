@@ -1,2 +1,2 @@
-# street-league-cloud
-Street League is a local competitive racing league for amateur racing enthusiasts.
+# shwamfa-cloud
+The most competitive fantasy football league in the world.

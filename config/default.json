@@ -1,5 +1,5 @@
 {
-    "name": "Street League",
+    "name": "ShwamFA",
     "jwtPrivateKey": "ksd7Sf&#fasd/asf",
-    "db": "mongodb://localhost/streetleague"
+    "db": "mongodb://localhost/shwamfa"
 }
