@@ -4,9 +4,6 @@ var Schema = mongoose.Schema;
 
 const teamSchema = new mongoose.Schema(
     {
-        emblemUrl: {
-            type: String
-        },
         name: {
             type: String
         },
@@ -204,7 +201,6 @@ const Team = mongoose.model('Team', teamSchema);
 
 function validateTeam(team) {
     const schema = {
-        emblemUrl: Joi.string().required(),
         name: Joi.string().required(),
         manager: Joi.string().required(),
         link: Joi.string().required(),
