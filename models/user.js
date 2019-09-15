@@ -45,14 +45,9 @@ const userSchema = new mongoose.Schema({
         default: 'USER',
         required: true
     },
-    favourite: {
-        type: String,
-        minlength: 3,
-        maxlength: 255
-    },
-    rating: {
-        type: Number,
-        default: 5
+    dateJoined: {
+        type: Date,
+        default: new Date()
     },
     dateCreated: {
         type: Date,
@@ -67,7 +62,7 @@ const userSchema = new mongoose.Schema({
 userSchema.methods.generateAuthToken = function(){
     const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin }, config.get('jwtPrivateKey'));
     return token;
-}
+};
 
 const User = mongoose.model('User', userSchema);
 
@@ -78,7 +73,8 @@ function validateJoin(user) {
         cellphone: Joi.string().min(8).max(255).required(),
         email: Joi.string().min(3).max(255).required().email(),
         password: Joi.string().min(5).max(1024).required(),
-        favourite: Joi.string().min(3).max(255).allow(null)
+        team: Joi.string().min(3).max(255).allow(null),
+        manager: Joi.string().min(3).max(255).allow(null)
     };
 
     return Joi.validate(user, schema);

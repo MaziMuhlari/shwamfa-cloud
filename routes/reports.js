@@ -1,5 +1,4 @@
 const { Article } = require('../models/article');
-const { Player } = require('../models/player');
 const { Team } = require('../models/team');
 const auth = require('../middleware/authentication');
 const express = require('express');
@@ -17,23 +16,6 @@ router.get('/articles/latest', auth, async (req, res) => {
 
     const article = await Article.findOne({}, {}, { sort: { 'created_at': -1 } });
     res.send(article);
-
-});
-
-/**
- * @api {get} /api/reports/players/scorers/top
- * @apiName GetTopPlayerScorer
- * @apiGroup Player
- * 
- * @apiDescription Get the top scorer.
- */
-router.get('/players/scorers/top', auth, async (req, res) => {
-
-    const player = await Player
-        .findOne()
-        .sort('-goalsScored');
-
-    res.send(player);
 
 });
 
