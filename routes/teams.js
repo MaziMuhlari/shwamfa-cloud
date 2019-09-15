@@ -47,7 +47,7 @@ router.get('/:teamId', auth, async (req, res) => {
 router.get('/', async (req, res) => {
 
     const teams = await Team.find();
-    let ranked = _.orderBy(teams, ['overall'], ['desc']);
+    let ranked = _.orderBy(teams, ['points'], ['desc']);
 
     var position = 1;
     var positioned = [];
@@ -59,7 +59,7 @@ router.get('/', async (req, res) => {
             id: team.id,
             __v: team.__v,
             position: position,
-            overall: team.overall,
+            points: team.points,
             matches: team.matches,
             emblemUrl: team.emblemUrl,
             name: team.name,
