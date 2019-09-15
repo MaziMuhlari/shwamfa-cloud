@@ -185,8 +185,16 @@ const teamSchema = new mongoose.Schema(
             ref: 'User',
             required: true
         }
+    },
+    {
+        toObject: { virtuals: true },
+        toJSON: { virtuals: true }
     }
 );
+
+teamSchema.virtual('overall').get(function () {
+    return this.Gameweek1 + this.Gameweek2 + this.Gameweek3 + this.Gameweek4 + this.Gameweek5 + this.Gameweek6 + this.Gameweek7 + this.Gameweek8 + this.Gameweek9 + this.Gameweek10 + this.Gameweek11 + this.Gameweek12 + this.Gameweek13 + this.Gameweek14 + this.Gameweek15 + this.Gameweek16 + this.Gameweek17 + this.Gameweek18 + this.Gameweek19 + this.Gameweek20 + this.Gameweek21 + this.Gameweek22 + this.Gameweek23 + this.Gameweek24 + this.Gameweek25 + this.Gameweek26 + this.Gameweek27 + this.Gameweek28 + this.Gameweek29 + this.Gameweek30 + this.Gameweek31 + this.Gameweek32 + this.Gameweek33 + this.Gameweek34 + this.Gameweek35 + this.Gameweek36 + this.Gameweek37 + this.Gameweek38;
+});
 
 const Team = mongoose.model('Team', teamSchema);
 

@@ -46,8 +46,39 @@ router.get('/:teamId', auth, async (req, res) => {
  */
 router.get('/', async (req, res) => {
 
-    const teams = await Team.find({}, {}, { sort: { 'created_at' : -1 } });
-    res.send(teams);
+    const teams = await Team.find();
+    let ranked = _.orderBy(teams, ['overall'], ['desc']);
+
+    var position = 1;
+    var positioned = [];
+
+    ranked.forEach(team => {
+
+        positioned.push({
+            position: position,
+            gamesWon: team.gamesWon,
+            gamesDrawn: team.gamesDrawn,
+            gamesLost: team.gamesLost,
+            goalsScored: team.goalsScored,
+            goalsConceided: team.goalsConceided,
+            league: team.league,
+            dateCreated: team.dateCreated,
+            lastUpdated: team.lastUpdated,
+            _id: team._id,
+            emblemUrl: team.emblemUrl,
+            name: team.name,
+            __v: team.__v,
+            gamesPlayed: team.gamesPlayed,
+            goalDifference: team.goalDifference,
+            points: team.points,
+            id: team.id
+        });
+
+        position++;
+
+    });
+
+    res.send(positioned);
 
 });
 
