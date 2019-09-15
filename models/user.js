@@ -51,6 +51,11 @@ const userSchema = new mongoose.Schema({
         maxlength: 255,
         unique: true
     },
+    favourite: {
+        type: String,
+        minlength: 3,
+        maxlength: 255
+    },
     dateCreated: {
         type: Date,
         default: new Date()
