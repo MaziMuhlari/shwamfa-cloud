@@ -189,7 +189,7 @@ const teamSchema = new mongoose.Schema(
 );
 
 teamSchema.virtual('points').get(function () {
-    return this.Gameweek1 + this.Gameweek2 + this.Gameweek3 + this.Gameweek4 + this.Gameweek5 + this.Gameweek6 + this.Gameweek7 + this.Gameweek8 + this.Gameweek9 + this.Gameweek10 + this.Gameweek11 + this.Gameweek12 + this.Gameweek13 + this.Gameweek14 + this.Gameweek15 + this.Gameweek16 + this.Gameweek17 + this.Gameweek18 + this.Gameweek19 + this.Gameweek20 + this.Gameweek21 + this.Gameweek22 + this.Gameweek23 + this.Gameweek24 + this.Gameweek25 + this.Gameweek26 + this.Gameweek27 + this.Gameweek28 + this.Gameweek29 + this.Gameweek30 + this.Gameweek31 + this.Gameweek32 + this.Gameweek33 + this.Gameweek34 + this.Gameweek35 + this.Gameweek36 + this.Gameweek37 + this.Gameweek38;
+    return this.gameweek1 + this.gameweek2 + this.gameweek3 + this.gameweek4 + this.gameweek5 + this.gameweek6 + this.gameweek7 + this.gameweek8 + this.gameweek9 + this.gameweek10 + this.gameweek11 + this.gameweek12 + this.gameweek13 + this.gameweek14 + this.gameweek15 + this.gameweek16 + this.gameweek17 + this.gameweek18 + this.gameweek19 + this.gameweek20 + this.gameweek21 + this.gameweek22 + this.gameweek23 + this.gameweek24 + this.gameweek25 + this.gameweek26 + this.gameweek27 + this.gameweek28 + this.gameweek29 + this.gameweek30 + this.gameweek31 + this.gameweek32 + this.gameweek33 + this.gameweek34 + this.gameweek35 + this.gameweek36 + this.gameweek37 + this.gameweek38;
 });
 
 teamSchema.virtual('matches').get(function () {
