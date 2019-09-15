@@ -1,5 +1,4 @@
 const { Article } = require('../models/article');
-const { Fixture } = require('../models/fixture');
 const { Player } = require('../models/player');
 const { Team } = require('../models/team');
 const auth = require('../middleware/authentication');
@@ -18,27 +17,6 @@ router.get('/articles/latest', auth, async (req, res) => {
 
     const article = await Article.findOne({}, {}, { sort: { 'created_at': -1 } });
     res.send(article);
-
-});
-
-/**
- * @api {get} /api/reports/fixtures/latest
- * @apiName GetLatestFixture
- * @apiGroup Fixture
- * 
- * @apiDescription Get the latest played fixture.
- */
-router.get('/fixtures/latest', auth, async (req, res) => {
-
-    var now = new Date();
-    now.setDate(now.getDate() + 1);
-
-    const fixture = await Fixture
-        .findOne()
-        .sort('-kickOff')
-        .where('kickOff').lt(now);
-
-    res.send(fixture);
 
 });
 
