@@ -46,7 +46,7 @@ router.get('/:articleId', auth, async (req, res) => {
  */
 router.get('/', auth, async (req, res) => {
 
-    const articles = await Article.find({}, {}, { sort: { 'created_at' : -1 } });
+    const articles = await Article.find({}, {}, { sort: { 'dateCreated' : -1 } });
     res.send(articles);
 
 });
