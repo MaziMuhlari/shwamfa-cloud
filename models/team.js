@@ -167,7 +167,19 @@ const teamSchema = new mongoose.Schema(
         },
         firstGameweek: {
             type: Number,
-            default: 1
+            default: 6
+        },
+        benchBoost: {
+            type: Number
+        },
+        freeHit: {
+            type: Number
+        },
+        tripleCaptain: {
+            type: Number
+        },
+        wildcard: {
+            type: Number
         },
         dateCreated: {
             type: Date,
