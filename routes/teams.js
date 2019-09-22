@@ -117,6 +117,11 @@ router.get('/', async (req, res) => {
             gameweek38: team.gameweek38,
 
             firstGameweek: team.firstGameweek,
+            benchBoost: team.benchBoost,
+            freeHit: team.freeHit,
+            tripleCaptain: team.tripleCaptain,
+            wildcard: team.wildcard,
+
             dateCreated: team.dateCreated,
             lastUpdated: team.lastUpdated,
             user: team.user
