@@ -14,7 +14,7 @@ const router = express.Router();
  */
 router.get('/articles/latest', auth, async (req, res) => {
 
-    const article = await Article.findOne({}, {}, { sort: { 'created_at': -1 } });
+    const article = await Article.findOne({}, {}, { sort: { 'dateCreated': -1 } });
     res.send(article);
 
 });
